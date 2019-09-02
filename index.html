@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тестовое задание 1. Долевое строительство</title>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <script>
+        // Фрагмент кода для замеров времени выполнения и потребляемой памяти
+        const LENGTH = 125000;//1250000
+        const MAX_SHARE = 100;
+        const DIGITS = 3;
+        const t0 = performance.now();
+        const shares = Array(LENGTH);
+        for (let i = 0; i < LENGTH; i += 1) {
+            shares[i] = String(MAX_SHARE*Math.random());
+        }
+        const t1 = performance.now();
+        const percents = getPercents(shares, DIGITS);
+        const t2 = performance.now();
+        console.log(`\nTime for creating ${LENGTH} items=`, (t1 - t0).toFixed(1), 'ms; Time per item=', ((t1 - t0)*1000/LENGTH).toFixed(3), 'mks;');
+        console.log(`Time for processing ${LENGTH} items=`, (t2 - t1).toFixed(1), 'ms; Time per item=', ((t2 - t1)*1000/LENGTH).toFixed(3), 'mks;');
+        console.log(`Full time for ${LENGTH} items=`, (t2 - t0).toFixed(1), 'ms; Time per item=', ((t2 - t0)*1000/LENGTH).toFixed(3), 'mks;');
+    </script>
+</body>
+</html>
